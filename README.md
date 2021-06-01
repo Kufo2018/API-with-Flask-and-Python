@@ -1,6 +1,6 @@
 ## Simple API endpoints using Python and Flask
 
-- Built by following freeCodeCamp's
+- Built following freeCodeCamp's
   tutorial [here](https://www.freecodecamp.org/news/learn-data-structures-flask-api-python/)
 
 ### Data structures
