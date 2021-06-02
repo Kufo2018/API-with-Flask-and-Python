@@ -3,7 +3,13 @@
 - Built following freeCodeCamp's
   tutorial [here](https://www.freecodecamp.org/news/learn-data-structures-flask-api-python/)
 
-### Data structures
+### How to run
+
+- Run ```python server.py```
+- Copy your localhost URL
+- Test routes with Postman
+
+### Data structures covered
 
 - Linked List
 - Hash Table
@@ -15,3 +21,4 @@
 - SQLite for database
 - Postman for testing
 - Flask for web framework
+
