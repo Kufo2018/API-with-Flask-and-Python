@@ -9,6 +9,7 @@ import linked_list
 import hash_table
 import binary_search_tree
 import custom_queue
+import stack
 
 # App
 app = Flask(__name__)
@@ -208,9 +209,24 @@ def get_numeric_post_bodies():
     return jsonify(return_list), 200
 
 
-@app.route("/blog_post/<numeric_body>", methods=["DELETE"])
-def delete_blog_post(blog_post_id):
-    pass
+@app.route("/blog_post/delete_last_10", methods=["DELETE"])
+def delete_last_ten_posts():
+    blog_posts = BlogPost.query.all()
+
+    stack_instance = stack.Stack()
+
+    for post in blog_posts:
+        stack_instance.push(post)
+
+    list_of_deleted_posts = {}
+    for _ in range(10):
+        post_to_be_deleted = stack_instance.pop()
+        list_of_deleted_posts[post_to_be_deleted.data.id] = post_to_be_deleted.data.title
+
+        db.session.delete(post_to_be_deleted.data)
+        db.session.commit()
+
+    return jsonify({"message": "successfully deleted posts", "deleted_posts": list_of_deleted_posts}), 200
 
 
 if __name__ == "__main__":
